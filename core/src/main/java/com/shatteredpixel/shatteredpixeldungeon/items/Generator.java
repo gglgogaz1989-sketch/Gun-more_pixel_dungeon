@@ -322,10 +322,14 @@ public class Generator {
 			return Short.MAX_VALUE+item.image();
 		}
 
-		static {
-			GOLD.classes = new Class<?>[]{
-					Gold.class };
-			GOLD.probs = new float[]{ 1 };
+		// Найди этот блок в Generator.java (примерно 250-я строка)
+static {
+    GOLD.classes = new Class<?>[]{
+            Gold.class, 
+            Bullet.class }; // Пуля теперь в списке
+    GOLD.probs = new float[]{ 0.1f, 0.9f }; // 10% золото, 90% пули
+}
+		
 			
 			POTION.classes = new Class<?>[]{
 					PotionOfStrength.class, //2 drop every chapter, see Dungeon.posNeeded()
