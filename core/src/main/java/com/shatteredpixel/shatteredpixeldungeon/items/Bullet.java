@@ -5,15 +5,19 @@ import com.watabou.utils.Random;
 public class Bullet extends Item {
 
 	public Bullet() {
-		super(); // Вызываем конструктор родителя на всякий случай
-		this.name = "Золотой патрон";
-		this.image = 100; 
-		this.stackable = true;
+		// Мы не присваиваем напрямую, а вызываем свойства
+		stackable = true;
+		image = 120;
+	}
+	
+	@Override
+	public String Name() {
+		return "Золотой патрон";
 	}
 
 	@Override
 	public Item random() {
-		this.quantity = Random.IntRange(30, 60);
+		quantity = Random.IntRange(30, 60);
 		return this;
 	}
 
