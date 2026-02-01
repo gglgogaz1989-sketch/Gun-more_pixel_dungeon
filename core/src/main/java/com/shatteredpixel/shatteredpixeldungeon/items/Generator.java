@@ -333,7 +333,7 @@ public class Generator {
 
 		GOLD.classes = new Class<?>[]{
 				Gold.class };
-		GOLD.probs = new float[]{ 1 };
+		GOLD.probs = new float[]{ 1 },
 
 		// Вот этот блок ты добавлял:
 		BULLET.classes = new Class<?>[]{
