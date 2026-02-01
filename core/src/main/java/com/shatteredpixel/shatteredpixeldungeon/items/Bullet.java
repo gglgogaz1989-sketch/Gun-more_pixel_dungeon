@@ -5,14 +5,10 @@ import com.watabou.utils.Random;
 public class Bullet extends Item {
 
 	public Bullet() {
-		// Мы не присваиваем напрямую, а вызываем свойства
+		// В Shattered PD имя часто задается так:
+		defaultName = "Золотой патрон";
+		image = 100;
 		stackable = true;
-		image = 120;
-	}
-	
-	@Override
-	public String Name() {
-		return "Золотой патрон";
 	}
 
 	@Override
