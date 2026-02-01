@@ -242,16 +242,16 @@ public class Generator {
 		RING	( 1, 0, Ring.class ),
 		ARTIFACT( 0, 1, Artifact.class),
 		
-		FOOD	( 0, 0, Food.class ),
-		
 		POTION	( 8, 8, Potion.class ),
 		SEED	( 1, 1, Plant.Seed.class ),
 		
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
 		
-		GOLD	( 10, 10,   Gold.class ),
-		BULLET  (10, 10,  Bullet.class);
+		FOOD( 0.15f, 0.15f ),
+		GOLD( 0.25f, 0.25f ), // Здесь ОБЯЗАТЕЛЬНО должна быть запятая
+		BULLET( 10f, 10f );   // Здесь ОБЯЗАТЕЛЬНО точка с запятой
+		
 		
 		public Class<?>[] classes;
 
@@ -325,13 +325,12 @@ public class Generator {
 
 		// Найди этот блок в Generator.java (примерно 250-я строка)
 static {
-    			GOLD.classes = new Class<?>[]{
+    				GOLD.classes = new Class<?>[]{
 					Gold.class };
 			GOLD.probs = new float[]{ 1 };
 
-			// Настройка твоих патронов
 			BULLET.classes = new Class<?>[]{
-					Bullet.class };
+					Bullet.class }; // Проверь, что файл Bullet.java существует!
 			BULLET.probs = new float[]{ 1 };
 		}
 		
