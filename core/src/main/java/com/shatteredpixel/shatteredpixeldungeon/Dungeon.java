@@ -266,6 +266,7 @@ public class Dungeon {
 		generatedLevels.clear();
 
 		gold = 0;
+		bullets = 10;
 		energy = 0;
 
 		droppedItems = new SparseArray<>();
