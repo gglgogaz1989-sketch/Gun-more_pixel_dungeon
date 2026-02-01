@@ -2,24 +2,27 @@ package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.watabou.utils.Random;
 
-// Мы ДОЛЖНЫ написать "extends Item", чтобы игра поняла, что это предмет
 public class Bullet extends Item {
 
     public Bullet() {
-        // Устанавливаем свойства внутри конструктора
+        // Имя и иконка
         name = "Золотой патрон";
         image = 127; 
+        
+        // Разрешаем собирать их в пачки
         stackable = true;
     }
 
+    // Метод для генерации случайного количества (30-60)
     @Override
     public Item random() {
         quantity = Random.IntRange(30, 60);
         return this;
     }
 
+    // Описание предмета
     @Override
     public String info() {
-        return "Тяжелый золотой патрон. Выглядит слишком ценным, чтобы просто им выстрелить, но выбора нет.";
+        return "Тяжелый золотой патрон. Пока что вы не знаете, что с ним делать, но в кармане он приятно греет душу.";
     }
 }
