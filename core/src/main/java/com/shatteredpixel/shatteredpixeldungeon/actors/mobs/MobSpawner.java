@@ -249,7 +249,7 @@ public class MobSpawner extends Actor {
 				else if (cl == Gnoll.class)         cl = GnollExile.class;
 				else if (cl == Crab.class)          cl = HermitCrab.class;
 				else if (cl == Slime.class)         cl = CausticSlime.class;
-
+                if (cl == Rat.class)                cl = NecroRat.class;
 				else if (cl == Thief.class)         cl = Bandit.class;
 				else if (cl == Necromancer.class)   cl = SpectralNecromancer.class;
 
