@@ -6,7 +6,6 @@ public class Bullet extends Item {
 
 	public Bullet() {
 		// В Shattered PD имя часто задается так:
-		defaultName = "Золотой патрон";
 		image = 100;
 		stackable = true;
 	}
