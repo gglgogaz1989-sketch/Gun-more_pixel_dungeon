@@ -325,9 +325,10 @@ public class Generator {
 		// Найди этот блок в Generator.java (примерно 250-я строка)
 static {
     GOLD.classes = new Class<?>[]{
-            Gold.class, 
-            Bullet.class }; // Пуля теперь в списке
-    GOLD.probs = new float[]{ 0.1f, 0.9f }; // 10% золото, 90% пули
+			Gold.class,
+			Bullet.class }; // Проверь, что Bullet.java уже создан!
+	GOLD.probs = new float[]{ 0.1f, 0.9f };
+		
 }
 		
 			
