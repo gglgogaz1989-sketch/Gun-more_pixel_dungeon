@@ -220,7 +220,7 @@ import java.util.LinkedHashMap;
 public class Generator {
 
 	public enum Category {
-		TRINKET ( 0, 0, Trinket.class),
+		TRINKET ( 3, 3, Trinket.class),
 
 		WEAPON	( 2, 2, MeleeWeapon.class),
 		WEP_T1	( 0, 0, MeleeWeapon.class),
@@ -247,10 +247,10 @@ public class Generator {
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
 		
-		ARTIFACT( 0.02f, 0.03f ),
-		FOOD( 0.15f, 0.15f ),
-		GOLD( 0.25f, 0.25f ),
-		BULLET( 10f, 10f );
+		ARTIFACT( 0.4, 0.4, Artifact.class),
+		FOOD( 0.5, 0.6, Food.class),
+		GOLD( 0.9, 0.9, Gold.class),
+		BULLET( 10, 10, Bullet.class);
 		
 		public Class<?>[] classes;
 
