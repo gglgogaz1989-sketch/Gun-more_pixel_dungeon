@@ -1,14 +1,18 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.utils.Random;
 
 public class Bullet extends Item {
     {
-        // Имя и описание
         name = "Золотой патрон";
-        // Номер иконки в атласе (нужно посчитать точный индекс в твоем файле)
-        image = 127; 
+        image = 127; // Твой индекс из атласа
         stackable = true;
+    }
+
+    @Override
+    public Item random() {
+        quantity = Random.IntRange(30, 60); // Случайное число от 30 до 60
+        return this;
     }
 
     @Override
