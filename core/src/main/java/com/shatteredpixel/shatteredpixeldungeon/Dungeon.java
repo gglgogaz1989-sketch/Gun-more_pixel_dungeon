@@ -197,7 +197,6 @@ public class Dungeon {
 	public static ArrayList<Integer> generatedLevels = new ArrayList<>();
 
 	public static int gold;
-    public static int bullets; // Наш новый счётчик
 	public static int energy;
 	
 	public static HashSet<Integer> chapters;
@@ -265,9 +264,8 @@ public class Dungeon {
 		branch = 0;
 		generatedLevels.clear();
 
-		gold = 0;
-		bullets = 10;
-		energy = 0;
+		gold = 99999;
+		energy = 99999;
 
 		droppedItems = new SparseArray<>();
 
