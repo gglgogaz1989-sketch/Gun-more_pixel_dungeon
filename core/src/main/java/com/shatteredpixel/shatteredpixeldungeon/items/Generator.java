@@ -23,7 +23,6 @@ package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.Armor;
-import com.shatteredpixel.shatteredpixeldungeon.items.Bullet;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClericArmor;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClothArmor;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.DuelistArmor;
@@ -249,8 +248,7 @@ public class Generator {
 		
 		ARTIFACT( 0.4, 0.4, Artifact.class),
 		FOOD( 0.5, 0.6, Food.class),
-		GOLD( 0.9, 0.9, Gold.class),
-		BULLET( 10, 10, Bullet.class);
+		GOLD( 0.9, 0.9, Gold.class);
 		
 		public Class<?>[] classes;
 
