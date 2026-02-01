@@ -206,7 +206,7 @@ import com.shatteredpixel.shatteredpixeldungeon.plants.Starflower;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Stormvine;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Sungrass;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Swiftthistle;
-import com.shatteredpixel.shatteredpixeldungeon.items.keys.ObsidianKey;
+import com.shatteredpixel.shatteredpixeldungeon.items.Bullet;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.GameMath;
 import com.watabou.utils.Random;
@@ -220,9 +220,9 @@ import java.util.LinkedHashMap;
 public class Generator {
 
 	public enum Category {
-		TRINKET ( 0, 0, Trinket.class),
+		TRINKET ( 9, 9, Trinket.class),
 
-		WEAPON	( 2, 2, MeleeWeapon.class),
+		WEAPON	( 5, 5, MeleeWeapon.class),
 		WEP_T1	( 0, 0, MeleeWeapon.class),
 		WEP_T2	( 0, 0, MeleeWeapon.class),
 		WEP_T3	( 0, 0, MeleeWeapon.class),
@@ -238,19 +238,21 @@ public class Generator {
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 0, 0, MissileWeapon.class ),
 		
-		WAND	( 1, 1, Wand.class ),
+		WAND	( 9, 9, Wand.class ),
 		RING	( 1, 0, Ring.class ),
-		ARTIFACT( 0, 1, Artifact.class),
+		ARTIFACT( 9, 9, Artifact.class),
 		
-		FOOD	( 0, 0, Food.class ),
+		FOOD	( 9, 9, Food.class ),
 		
 		POTION	( 8, 8, Potion.class ),
-		SEED	( 1, 1, Plant.Seed.class ),
+		SEED	( 9, 9, Plant.Seed.class ),
 		
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
 		
-		GOLD	( 10, 10,   Gold.class );
+		GOLD	( 10, 10,   Gold.class ),
+
+		BULLET	( 10, 10,   Bullet.class );
 		
 		public Class<?>[] classes;
 
