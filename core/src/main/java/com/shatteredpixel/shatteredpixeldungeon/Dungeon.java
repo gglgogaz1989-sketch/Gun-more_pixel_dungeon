@@ -197,6 +197,7 @@ public class Dungeon {
 	public static ArrayList<Integer> generatedLevels = new ArrayList<>();
 
 	public static int gold;
+    public static int bullets; // Наш новый счётчик
 	public static int energy;
 	
 	public static HashSet<Integer> chapters;
