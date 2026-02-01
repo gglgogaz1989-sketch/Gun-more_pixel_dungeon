@@ -2,20 +2,21 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Charmed;
-import com.shatteredpixel.shatteredpixeldungeon.sprites.RatSprite;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Charm; // Исправлено: Charm вместо Charmed
+import com.shatteredpixel.shatteredpixeldungeon.sprites.NecroRatSprite;
 import com.watabou.utils.Random;
 
 public class NecroRat extends Mob {
-
     {
-        name = "Крыса-некромант";
-        spriteClass = RatSprite.class; // Пока используем обычный спрайт для теста
-
+        spriteClass = NecroRatSprite.class;
         HP = HT = 15;
         defenseSkill = 2;
         EXP = 5;
-        maxLvl = 5;
+    }
+
+    @Override
+    public String name() { // В новых версиях имя задается так
+        return "Крыса-некромант";
     }
 
     @Override
@@ -24,14 +25,8 @@ public class NecroRat extends Mob {
     }
 
     @Override
-    public int attackSkill(Char target) {
-        return 10; // Немного точнее обычной крысы
-    }
-
-    @Override
     public int attackProc(Char enemy, int damage) {
-        // Эффект очарования при ударе
-        Buff.affect(enemy, Charmed.class, 1f); 
+        Buff.affect(enemy, Charm.class, 1f); 
         return damage;
     }
 }
