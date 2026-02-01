@@ -136,11 +136,21 @@ public class SewerLevel extends RegularLevel {
 						1, 1, 1, 1, 1};
 	}
 
-	@Override
-	protected void createMobs() {
-		Ghost.Quest.spawn( this, roomExit );
-		super.createMobs();
-	}
+@Override
+protected void createMobs() {
+    super.createMobs();
+    // Тут код, который запускает генерацию
+}
+
+// ВСТАВЛЯЙ СЮДА
+@Override
+public Mob mobByType() {
+    if (Random.Int(10) == 0) {
+        return new NecroRat();
+    }
+    return super.mobByType();
+}
+	
 	
 	@Override
 	public boolean activateTransition(Hero hero, LevelTransition transition) {
