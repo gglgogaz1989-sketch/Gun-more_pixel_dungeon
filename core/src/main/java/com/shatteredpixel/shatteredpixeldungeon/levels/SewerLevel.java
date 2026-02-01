@@ -22,6 +22,8 @@
 package com.shatteredpixel.shatteredpixeldungeon.levels;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.NecroRat;
 import com.shatteredpixel.shatteredpixeldungeon.Badges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.GamesInProgress;
@@ -142,14 +144,14 @@ protected void createMobs() {
     // Тут код, который запускает генерацию
 }
 
-// ВСТАВЛЯЙ СЮДА
 @Override
-public Mob mobByType() {
+public Mob spawnMob() { // В новых версиях метод часто называется spawnMob
     if (Random.Int(10) == 0) {
         return new NecroRat();
     }
-    return super.mobByType();
-}
+    return super.spawnMob();
+	}
+
 	
 	
 	@Override
