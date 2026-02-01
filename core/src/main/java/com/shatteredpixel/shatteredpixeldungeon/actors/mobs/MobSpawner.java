@@ -72,9 +72,9 @@ public class MobSpawner extends Actor {
 
 			// Sewers
 			case 1: default:
-				//3x rat, 1x snake
+				//2x rat, 1x snake, 1x necrorat
 				return new ArrayList<>(Arrays.asList(
-						Rat.class, Rat.class, Rat.class,
+						Rat.class, Rat.class, NecroRat.class,
 						Snake.class));
 			case 2:
 				//2x rat, 1x snake, 2x gnoll
@@ -241,12 +241,12 @@ public class MobSpawner extends Actor {
 
 	//switches out regular mobs for their alt versions when appropriate
 	private static void swapMobAlts(ArrayList<Class<?extends Mob>> rotation) {
-		float altChance = 1 / 20f * RatSkull.exoticChanceMultiplier();
+		float altChance = 2 / 50f * RatSkull.exoticChanceMultiplier();
 		for (int i = 0; i < rotation.size(); i++) {
 			if (Random.Float() < altChance) {
 				Class<? extends Mob> cl = rotation.get(i);
 				if (cl == Rat.class)                cl = Albino.class;
-				else if (cl == Rat.class)                cl = NecroRat.class;
+				else if (cl == Snake.class)         cl = NecroRat.class;
 				else if (cl == Gnoll.class)         cl = GnollExile.class;
 				else if (cl == Crab.class)          cl = HermitCrab.class;
 				else if (cl == Slime.class)         cl = CausticSlime.class;
