@@ -240,7 +240,6 @@ public class Generator {
 		
 		WAND	( 1, 1, Wand.class ),
 		RING	( 1, 0, Ring.class ),
-		ARTIFACT( 0, 1, Artifact.class),
 		
 		POTION	( 8, 8, Potion.class ),
 		SEED	( 1, 1, Plant.Seed.class ),
@@ -248,10 +247,10 @@ public class Generator {
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
 		
+		ARTIFACT( 0.02f, 0.03f ),
 		FOOD( 0.15f, 0.15f ),
-		GOLD( 0.25f, 0.25f ), // Здесь ОБЯЗАТЕЛЬНО должна быть запятая
-		BULLET( 10f, 10f );   // Здесь ОБЯЗАТЕЛЬНО точка с запятой
-		
+		GOLD( 0.25f, 0.25f ),
+		BULLET( 10f, 10f );
 		
 		public Class<?>[] classes;
 
@@ -325,22 +324,16 @@ public class Generator {
 
 		// Найди этот блок в Generator.java (примерно 250-я строка)
 	static {
-		for (Category cat : Category.values()) {
-			cat.init();
+					GOLD.classes = new Class<?>[]{
+					Gold.class };
+			GOLD.probs = new float[]{ 1 },
+
+			BULLET.classes = new Class<?>[]{
+					Bullet.class };
+			BULLET.probs = new float[]{ 1 };
+
 		}
-
-		// ... тут идут другие категории ...
-
-		GOLD.classes = new Class<?>[]{
-				Gold.class };
-		GOLD.probs = new float[]{ 1 },
-
-		// Вот этот блок ты добавлял:
-		BULLET.classes = new Class<?>[]{
-				Bullet.class };
-		BULLET.probs = new float[]{ 1 };
-
-	} // <--- ПРОВЕРЬ, ЧТО ЭТА СКОБКА СТОИТ ТУТ! Она закрывает статический блок.
+		
 		
 		
 			
