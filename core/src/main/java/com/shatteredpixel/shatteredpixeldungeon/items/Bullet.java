@@ -1,28 +1,48 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
+import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.effects.FloatingText;
+import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Random;
 
-public class Bullet extends Item {
+public class Bullet extends Gold {
 
-    public Bullet() {
-        // Имя и иконка
-        name = "Золотой патрон";
-        image = 127; 
-        
-        // Разрешаем собирать их в пачки
-        stackable = true;
-    }
+	public Bullet() {
+		this( 1 );
+	}
 
-    // Метод для генерации случайного количества (30-60)
-    @Override
-    public Item random() {
-        quantity = Random.IntRange(30, 60);
-        return this;
-    }
+	public Bullet( int value ) {
+		super( value );
+		image = 127; 
+	}
 
-    // Описание предмета
-    @Override
-    public String info() {
-        return "Тяжелый золотой патрон. Пока что вы не знаете, что с ним делать, но в кармане он приятно греет душу.";
-    }
+	@Override
+	public boolean doPickUp(Hero hero, int pos) {
+		Catalog.setSeen(getClass());
+
+		// ТЕПЕРЬ ПРИБАВЛЯЕМ В СВОЮ ПЕРЕМЕННУЮ
+		Dungeon.bullets += quantity;
+
+		GameScene.pickUp( this, pos );
+		
+		// Цвет текста ITEM (белый/серый), чтобы отличалось от желтого золота
+		hero.sprite.showStatusWithIcon( CharSprite.NEUTRAL, Integer.toString(quantity), FloatingText.ITEM );
+		hero.spendAndNext( pickupDelay() );
+		
+		// Звук (сделаем его чуть более "металлическим")
+		Sample.INSTANCE.play( Assets.Sounds.GOLD, 1, 1.4f, Random.Float( 1.1f, 1.3f ) );
+		
+		return true;
+	}
+
+	@Override
+	public Item random() {
+		quantity = Random.IntRange( 30, 60 );
+		return this;
+	}
 }
