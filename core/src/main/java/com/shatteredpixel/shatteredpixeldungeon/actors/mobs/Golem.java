@@ -42,11 +42,11 @@ public class Golem extends Mob {
 	{
 		spriteClass = GolemSprite.class;
 		
-		HP = HT = 120;
+		HP = HT = 10;
 		defenseSkill = 15;
 		
-		EXP = 12;
-		maxLvl = 22;
+		EXP = 1200;
+		maxLvl = 220;
 
 		loot = Random.oneOf(Generator.Category.WEAPON, Generator.Category.ARMOR);
 		lootChance = 0.2f; //initially, see lootChance()
