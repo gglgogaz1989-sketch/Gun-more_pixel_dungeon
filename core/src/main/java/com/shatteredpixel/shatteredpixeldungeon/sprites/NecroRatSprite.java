@@ -1,25 +1,33 @@
 package com.shatteredpixel.shatteredpixeldungeon.sprites;
 
+import com.shatteredpixel.shatteredpixeldungeon.Assets;
+import com.watabou.noosa.TextureFilm;
+
 public class NecroRatSprite extends MobSprite {
     
-    // Определяем смещение кадров для 4-го ряда (Некромант)
-    private static final int ROW = 24; 
-
     public NecroRatSprite() {
         super();
-        texture = Assets.RAT; // Используем стандартный файл, который ты дополнил
         
-        // Настраиваем анимации, прибавляя смещение ROW к номерам кадров
+        // Используем стандартный ассет крысы
+        texture( Assets.Sprites.RAT );
+        // Нарезаем файл на кадры 16x16
+        TextureFilm film = new TextureFilm( texture, 16, 16 );
+        
+        // Твой 4-й ряд (Некромант) начинается с 24-го кадра (если в ряду 8 кадров)
+        int ROW = 24; 
+        
         idle = new Animation( 10, true );
-        idle.frames( ROW + 0, ROW + 1 ); // Кадры покоя
-
+        idle.frames( film, ROW + 0, ROW + 1 );
+        
         run = new Animation( 15, true );
-        run.frames( ROW + 2, ROW + 3, ROW + 4, ROW + 5 ); // Кадры бега
-
-        attack = new Animation( 15, false );
-        attack.frames( ROW + 6, ROW + 7 ); // Кадры атаки
-
+        run.frames( film, ROW + 2, ROW + 3, ROW + 4, ROW + 5 );
+        
         die = new Animation( 12, false );
-        die.frames( ROW + 8, ROW + 9 ); // Кадры смерти
+        die.frames( film, ROW + 8, ROW + 9 );
+        
+        attack = new Animation( 15, false );
+        attack.frames( film, ROW + 6, ROW + 7 );
+        
+        idle();
     }
-          }
+}
