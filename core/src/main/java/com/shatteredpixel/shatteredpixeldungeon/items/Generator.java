@@ -324,15 +324,24 @@ public class Generator {
 		}
 
 		// Найди этот блок в Generator.java (примерно 250-я строка)
-static {
-    				GOLD.classes = new Class<?>[]{
-					Gold.class };
-			GOLD.probs = new float[]{ 1 };
-
-			BULLET.classes = new Class<?>[]{
-					Bullet.class }; // Проверь, что файл Bullet.java существует!
-			BULLET.probs = new float[]{ 1 };
+	static {
+		for (Category cat : Category.values()) {
+			cat.init();
 		}
+
+		// ... тут идут другие категории ...
+
+		GOLD.classes = new Class<?>[]{
+				Gold.class };
+		GOLD.probs = new float[]{ 1 };
+
+		// Вот этот блок ты добавлял:
+		BULLET.classes = new Class<?>[]{
+				Bullet.class };
+		BULLET.probs = new float[]{ 1 };
+
+	} // <--- ПРОВЕРЬ, ЧТО ЭТА СКОБКА СТОИТ ТУТ! Она закрывает статический блок.
+		
 		
 			
 			POTION.classes = new Class<?>[]{
