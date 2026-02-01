@@ -144,15 +144,6 @@ protected void createMobs() {
     // Тут код, который запускает генерацию
 }
 
-@Override
-public Mob spawnMob() { // В новых версиях метод часто называется spawnMob
-    if (Random.Int(10) == 0) {
-        return new NecroRat();
-    }
-    return super.spawnMob();
-	}
-
-	
 	
 	@Override
 	public boolean activateTransition(Hero hero, LevelTransition transition) {
