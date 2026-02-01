@@ -326,11 +326,7 @@ public class Generator {
 	static {
 					GOLD.classes = new Class<?>[]{
 					Gold.class };
-			GOLD.probs = new float[]{ 1 },
-
-			BULLET.classes = new Class<?>[]{
-					Bullet.class };
-			BULLET.probs = new float[]{ 1 };
+			GOLD.probs = new float[]{ 1 }!
 
 		}
 		
