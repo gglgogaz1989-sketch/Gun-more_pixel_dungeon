@@ -97,8 +97,8 @@ public class Statistics {
 		totalBossScore  = 0;
 		questScores     = new int[5];
 		totalQuestScore = 0;
-		winMultiplier   = 1;
-		chalMultiplier  = 1;
+		winMultiplier   = 0;
+		chalMultiplier  = 0;
 		totalScore      = 0;
 		
 		upgradesUsed    = 0;
