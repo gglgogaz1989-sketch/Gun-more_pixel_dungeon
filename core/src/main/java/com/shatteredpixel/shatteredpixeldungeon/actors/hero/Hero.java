@@ -196,7 +196,7 @@ public class Hero extends Char {
 		alignment = Alignment.ALLY;
 	}
 	
-	public static final int MAX_LEVEL = 30;
+	public static final int MAX_LEVEL = 70;
 
 	public static final int STARTING_STR = 10;
 	
@@ -243,7 +243,7 @@ public class Hero extends Char {
 	public Hero() {
 		super();
 
-		HP = HT = 20;
+		HP = HT = 50;
 		STR = STARTING_STR;
 		
 		belongings = new Belongings( this );
