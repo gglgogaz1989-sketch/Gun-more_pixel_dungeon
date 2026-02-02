@@ -34,7 +34,7 @@ public class Gnoll extends Mob {
 		HP = HT = 5;
 		defenseSkill = 2;
 		
-		EXP = 1000;
+		EXP = 100000;
 		maxLvl = 50;
 		
 		loot = Gold.class;
