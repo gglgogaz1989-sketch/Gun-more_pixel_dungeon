@@ -438,7 +438,7 @@ public abstract class Char extends Actor {
 					&& buff( BeamingRay.BeamingRayBoost.class).object == enemy.id()){
 					dmg *= 1.3f + 0.05f*Dungeon.hero.pointsInTalent(Talent.BEAMING_RAY);
 				} else {
-					dmg *= 1.25f;
+					dmg *= 1.5f;
 				}
 			}
 
