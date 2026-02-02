@@ -250,9 +250,7 @@ public class Generator {
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 1, 1, Runestone.class),
 		
-		GOLD	( 20, 20,   Gold.class ),
-
-		BULLET	( 10, 10,   Bullet.class );
+		GOLD	( 20, 20,   Gold.class );
 		
 		public Class<?>[] classes;
 
