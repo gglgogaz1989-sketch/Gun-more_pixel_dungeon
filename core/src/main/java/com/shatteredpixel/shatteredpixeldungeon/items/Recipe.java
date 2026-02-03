@@ -227,6 +227,15 @@ public abstract class Recipe {
 			if (recipe.testIngredients(ingredients)){
 				result.add(recipe);
 			}
+	public static boolean usableInRecipe(Item item){
+    if (item instanceof EquipableItem){
+        // Теперь разрешаем и ростовой щит!
+        if (item instanceof Greatshield) {
+            return item.cursedKnown && !item.cursed;
+        }
+        return item.cursedKnown && !item.cursed &&
+                item instanceof MissileWeapon && item.isUpgradable();
+    } ...
 		}
 
 		if (ingredients.size() == 1){
@@ -254,18 +263,3 @@ public abstract class Recipe {
 		return result;
 	}
 	
-	public static boolean usableInRecipe(Item item){
-		//only upgradeable thrown weapons and wands allowed among equipment items
-		if (item instanceof EquipableItem){
-			return item.cursedKnown && !item.cursed &&
-					item instanceof MissileWeapon && item.isUpgradable();
-		} else if (item instanceof Wand) {
-			return item.cursedKnown && !item.cursed;
-		} else {
-			//other items can be unidentified, but not cursed
-			return !item.cursed;
-		}
-	}
-}
-
-
