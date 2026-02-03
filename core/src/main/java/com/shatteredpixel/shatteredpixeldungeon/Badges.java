@@ -215,7 +215,8 @@ public class Badges {
 		GAMES_PLAYED_5              ( 124, BadgeType.GLOBAL ),
 		HIGH_SCORE_5                ( 125 ),
 		CHAMPION_2                  ( 126 ),
-		CHAMPION_3                  ( 127 );
+		CHAMPION_3                  ( 127 ),
+		UNLUCKY                     ( 128 );
 
 		public boolean meta;
 
@@ -849,6 +850,9 @@ public class Badges {
 			break;
 		case 20:
 			badge = Badge.BOSS_SLAIN_4;
+			break;
+		case 20:
+			badge = Badge.UNLUCKY;
 			break;
 		}
 		
