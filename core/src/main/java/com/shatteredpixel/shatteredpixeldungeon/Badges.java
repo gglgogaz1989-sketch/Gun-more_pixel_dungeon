@@ -439,6 +439,11 @@ public class Badges {
 			badge = Badge.LEVEL_REACHED_5;
 			local.add( badge );
 		}
+		if (!local.contains( Badge.UNLUCKY ) && Dungeon.hero.lvl >= 100) {
+			if (badge != null) unlock(badge);
+			badge = Badge.UNLUCKY;
+			local.add( badge );
+		}
 		
 		displayBadge( badge );
 	}
@@ -479,10 +484,6 @@ public class Badges {
 		
 		if (!local.contains( Badge.FOOD_EATEN_1 ) && Statistics.foodEaten >= 10) {
 			badge = Badge.FOOD_EATEN_1;
-			local.add( badge );
-		}
-		if (!local.contains( Badge.UNLUKY ) && Statistics.foodEaten >= 1) {
-			badge = Badge.UNLUCKY;
 			local.add( badge );
 		}
 		if (!local.contains( Badge.FOOD_EATEN_2 ) && Statistics.foodEaten >= 20) {
