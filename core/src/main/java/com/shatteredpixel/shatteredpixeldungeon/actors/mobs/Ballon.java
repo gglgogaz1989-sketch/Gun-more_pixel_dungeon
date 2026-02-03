@@ -2,54 +2,36 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.BallonSprite;
-import com.shatteredpixel.shatteredpixeldungeon.items.potions.HealingPotion;
-import com.shatteredpixel.shatteredpixeldungeon.items.potions.ExperiencePotion;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfExperience;
 import com.watabou.utils.Random;
 
 public class Ballon extends Mob {
 
     {
         spriteClass = BallonSprite.class;
-
-        HP = HT = 1; // В твоей версии скорее всего заглавные буквы
-        EXP = 0;     // И здесь тоже заглавные
+        HP = HT = 1;
+        EXP = 0;
     }
 
     @Override
-    public String name() {
-        return "Праздничный Шарик";
-    }
+    public int damageRoll() { return 0; }
 
     @Override
-    public int damageRoll() {
-        return 0;
-    }
+    public int attackSkill(com.shatteredpixel.shatteredpixeldungeon.actors.Char target) { return 0; }
 
     @Override
-    public int attackSkill(com.shatteredpixel.shatteredpixeldungeon.actors.Char target) {
-        return 0;
-    }
-
-    @Override
-    public float attackDelay() {
-        return 100f;
-    }
+    public float attackDelay() { return 100f; }
 
     @Override
     public void die(Object cause) {
         super.die(cause);
         
-        // Используем HealingPotion (зелье лечения), оно обычно стандартное для всех версий
+        // Выпадение подарка с правильными названиями классов
         if (Random.Int(2) == 0) {
-            Dungeon.level.drop(new HealingPotion(), pos).sprite.drop();
+            Dungeon.level.drop(new PotionOfHealing(), pos).sprite.drop();
         } else {
-            // Если ExperiencePotion не найдется, заменим на свиток или еду, 
-            // но пока попробуем так
-            try {
-                Dungeon.level.drop(new ExperiencePotion(), pos).sprite.drop();
-            } catch (Exception e) {
-                // Если всё равно ошибка - просто не выпадет ничего, но билд не упадет
-            }
+            Dungeon.level.drop(new PotionOfExperience(), pos).sprite.drop();
         }
     }
 }
