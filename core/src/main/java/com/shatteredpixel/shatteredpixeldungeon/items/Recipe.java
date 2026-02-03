@@ -199,6 +199,7 @@ public abstract class Recipe {
 	
 	private static Recipe[] twoIngredientRecipes = new Recipe[]{
 		new Blandfruit.CookFruit(),
+		new IronShield.Recipe(),
 		new Bomb.EnhanceBomb(),
 		new UnstableBrew.Recipe(),
 		new CausticBrew.Recipe(),
