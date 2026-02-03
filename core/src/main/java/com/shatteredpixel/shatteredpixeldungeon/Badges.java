@@ -376,6 +376,32 @@ public class Badges {
 			badge = Badge.MONSTERS_SLAIN_5;
 			local.add( badge );
 		}
+		public static void validateRareCollector() {
+    // Если уже открыто, выходим
+    if (isUnlocked(Badge.UNLUCKY)) return;
+
+    // Список редких мобов для атласа
+    // Сюда добавь Ballon.class и других редких мобов из твоего мода
+    Class<?>[] rareMobs = {
+        com.shatteredpixel.shatteredpixeldungeon.actors.mobs.AlbinoRat.class,
+        com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Ballon.class, 
+        // Добавь других, если нужно
+    };
+
+    boolean allFound = true;
+    for (Class<?> mobClass : rareMobs) {
+        // Проверяем, есть ли запись в бестиарии (атласе)
+        if (com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary.isMonsterSlain(mobClass) == 0) {
+            allFound = false;
+            break;
+        }
+    }
+
+    if (allFound) {
+        local.add(Badge.UNLUCKY);
+        displayBadge(Badge.UNLUCKY);
+    }
+		}
 		
 		displayBadge( badge );
 	}
