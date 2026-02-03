@@ -481,6 +481,10 @@ public class Badges {
 			badge = Badge.FOOD_EATEN_1;
 			local.add( badge );
 		}
+		if (!local.contains( Badge.UNLUKY ) && Statistics.foodEaten >= 1) {
+			badge = Badge.UNLUCKY;
+			local.add( badge );
+		}
 		if (!local.contains( Badge.FOOD_EATEN_2 ) && Statistics.foodEaten >= 20) {
 			if (badge != null) unlock(badge);
 			badge = Badge.FOOD_EATEN_2;
@@ -850,9 +854,6 @@ public class Badges {
 			break;
 		case 20:
 			badge = Badge.BOSS_SLAIN_4;
-			break;
-		case 20:
-			badge = Badge.UNLUCKY;
 			break;
 		}
 		
