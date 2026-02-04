@@ -59,6 +59,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.Trinket;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.TrinketCatalyst;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.Wand;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon;
 import com.watabou.utils.Reflection;
 
 import java.util.ArrayList;
@@ -231,9 +232,6 @@ public abstract class Recipe {
 	public static boolean usableInRecipe(Item item){
     if (item instanceof EquipableItem){
         // Теперь разрешаем и ростовой щит!
-        if (item instanceof Greatshield) {
-            return item.cursedKnown && !item.cursed;
-        }
         return item.cursedKnown && !item.cursed &&
                 item instanceof MissileWeapon && item.isUpgradable();
     } ...
