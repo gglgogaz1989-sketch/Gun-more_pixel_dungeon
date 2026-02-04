@@ -1,19 +1,16 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-// Оставляем только нужные импорты
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import java.util.ArrayList;
 
-public class CopperBullet extends Item {
+// Имя класса теперь Bullet, чтобы совпадать с именем файла и запросами из Catalog/Generator
+public class Bullet extends Item {
 
 	{
-		// Твой индекс текстуры (125 или тот, что ты выбрал)
 		image = 125;
-		
 		stackable = true;
 	}
 	
-	// Убираем все действия (actions), чтобы пулю нельзя было "зажечь" или "использовать" как факел
 	@Override
 	public ArrayList<String> actions( Hero hero ) {
 		return super.actions( hero );
@@ -34,10 +31,8 @@ public class CopperBullet extends Item {
 		return true;
 	}
 	
-	// Цена продажи в магазине (например, 10 золота за штуку)
 	@Override
 	public int value() {
 		return 10 * quantity;
 	}
-
 }
