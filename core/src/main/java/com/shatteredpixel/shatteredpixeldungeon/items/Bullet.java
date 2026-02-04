@@ -1,40 +1,43 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.watabou.utils.Bundle;
-import com.watabou.utils.Random;
+// Оставляем только нужные импорты
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import java.util.ArrayList;
 
-public class Bullet extends Item {
+public class CopperBullet extends Item {
 
-    public Bullet() {
-        // Ставим ID 361 (судя по атласу, патрон в самом низу)
-        image = 361; 
-        stackable = true;
-    }
+	{
+		// Твой индекс текстуры (125 или тот, что ты выбрал)
+		image = 125;
+		
+		stackable = true;
+	}
+	
+	// Убираем все действия (actions), чтобы пулю нельзя было "зажечь" или "использовать" как факел
+	@Override
+	public ArrayList<String> actions( Hero hero ) {
+		return super.actions( hero );
+	}
+	
+	@Override
+	public void execute( Hero hero, String action ) {
+		super.execute( hero, action );
+	}
+	
+	@Override
+	public boolean isUpgradable() {
+		return false;
+	}
+	
+	@Override
+	public boolean isIdentified() {
+		return true;
+	}
+	
+	// Цена продажи в магазине (например, 10 золота за штуку)
+	@Override
+	public int value() {
+		return 10 * quantity;
+	}
 
-    // Эти методы ОБЯЗАТЕЛЬНЫ, чтобы игра не вылетала при переходе на другой этаж
-    @Override
-    public void storeInBundle( Bundle bundle ) {
-        super.storeInBundle( bundle );
-    }
-
-    @Override
-    public void restoreFromBundle( Bundle bundle ) {
-        super.restoreFromBundle( bundle );
-    }
-
-    @Override
-    public String toString() {
-        return "Золотой патрон";
-    }
-
-    @Override
-    public Item random() {
-        quantity = Random.IntRange(30, 60);
-        return this;
-    }
-
-    @Override
-    public String info() {
-        return "Тяжелый золотой патрон. Пока что просто копится в сумке.";
-    }
 }
