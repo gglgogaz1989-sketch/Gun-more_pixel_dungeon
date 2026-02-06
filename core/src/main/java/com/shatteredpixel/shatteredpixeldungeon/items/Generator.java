@@ -602,7 +602,7 @@ public class Generator {
 					ShardOfOblivion.class,
 					ChaoticCenser.class,
 					FerretTuft.class,
-					CrackedSpyglass.class
+					CrackedSpyglass.class,
 			     	DefencedRatSkull.class
 			};
 			TRINKET.defaultProbs = new float[]{ 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 };
