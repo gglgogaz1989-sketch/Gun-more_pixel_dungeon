@@ -434,10 +434,9 @@ public class Generator {
 					Cudgel.class,
 				    IronShield.class,
 				    BigSword.class,
-				    UpdateBigSword.class,
 				    SuperBigSword.class
 			};
-			WEP_T1.defaultProbs = new float[]{ 2, 0, 2, 2, 2, 2, 5};
+			WEP_T1.defaultProbs = new float[]{ 2, 0, 2, 2, 2, 2, 5, 7, 9};
 			WEP_T1.probs = WEP_T1.defaultProbs.clone();
 			
 			WEP_T2.classes = new Class<?>[]{
@@ -486,10 +485,10 @@ public class Generator {
 					WarScythe.class,
 				    Glock_16.class,
 				    BigSword.class,
-				    UpdateBigSword.class,
+	                UpdateBigSword.class,
 				    SuperBigSword.class
 			};
-			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10 };
+			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10, 13, 15, 16 };
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
 			
 			//see Generator.randomArmor
