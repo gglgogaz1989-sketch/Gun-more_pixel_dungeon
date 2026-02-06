@@ -25,12 +25,12 @@ public class IronShield extends MeleeWeapon {
     // Урон щита: 40-60
     @Override
     public int min(int lvl) {
-        return 40 + (lvl * 2); 
+        return 40 + (lvl * 5); 
     }
 
     @Override
     public int max(int lvl) {
-        return 60 + (lvl * 5); 
+        return 60 + (lvl * 7); 
     }
 
     // МЕХАНИКА БЛОКА
