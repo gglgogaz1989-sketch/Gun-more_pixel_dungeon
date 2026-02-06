@@ -4,27 +4,40 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 
 public class IronShield extends MeleeWeapon {
 
-    {
-        // Индекс для координат 96x96
+    public IronShield() {
+        // Инициализация: тир 5, скорость 1.2f (щиты медленнее), точность 1f
+        super( 5, 1.2f, 1f );
+        // Индекс для 96x96
         image = 102; 
-        tier = 5;
     }
 
-    // Минимальный урон
+    // ИСПРАВЛЕНИЕ: Реализуем обязательный метод требований силы
+    @Override
+    public int STRReq(int lvl) {
+        return 18 - lvl; // Для 5 тира нужно 18 силы, уменьшается при заточке
+    }
+    
+    @Override
+    public int minStrength() {
+        return STRReq(level());
+    }
+
+    // Урон щита: 40-60
     @Override
     public int min(int lvl) {
-        return 40 + (lvl * 2); // 40 базовый + 2 за каждый уровень заточки
+        return 40 + (lvl * 2); 
     }
 
-    // Максимальный урон
     @Override
     public int max(int lvl) {
-        return 60 + (lvl * 5); // 60 базовый + 5 за каждый уровень заточки
+        return 60 + (lvl * 5); 
     }
 
+    // МЕХАНИКА БЛОКА
+    // Этот метод отвечает за поглощение урона в Shattered PD
     @Override
     public int defenseFactor(Char owner) {
-        // Блок: 10 базовой защиты + 4 за уровень заточки
+        // 10 базовой защиты + 4 за уровень заточки
         return 10 + 4 * buffedLvl();
     }
 
@@ -35,6 +48,8 @@ public class IronShield extends MeleeWeapon {
 
     @Override
     public String desc() {
-        return "Огромный щит из литого железа. Им можно не только защищаться, но и больно бить.";
+        int block = 10 + 4 * buffedLvl();
+        return "Огромный щит из литого железа. \n\n" +
+               "Этот щит поглощает до " + block + " ед. урона при каждой атаке врага.";
     }
 }
