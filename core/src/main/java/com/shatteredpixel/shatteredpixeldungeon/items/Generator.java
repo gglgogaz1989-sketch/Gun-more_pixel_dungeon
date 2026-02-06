@@ -433,6 +433,9 @@ public class Generator {
 					Rapier.class,
 					Cudgel.class,
 				    IronShield.class,
+				    BigSword.class,
+				    UpgradeBigSword.class,
+				    SuperBigSword.class
 			};
 			WEP_T1.defaultProbs = new float[]{ 2, 0, 2, 2, 2, 2, 5};
 			WEP_T1.probs = WEP_T1.defaultProbs.clone();
@@ -618,10 +621,7 @@ public class Generator {
 
 			BULLET.classes = new Class<?>[]{
 					Bullet.class,
-				    Glock_16.class,
-					BigSword.class,
-				    UpgradeBigSword.class,
-				    SuperBigSword.class
+				    Glock_16.class
 			};
 			BULLET.defaultProbs = new float[]{ 10, 5, 13, 13, 13};
 			BULLET.probs = BULLET.defaultProbs.clone();
