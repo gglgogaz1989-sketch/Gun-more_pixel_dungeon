@@ -1,4 +1,4 @@
-package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee; // Оставляем в melee, как Crossbow
+package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
@@ -9,24 +9,22 @@ import java.util.ArrayList;
 
 public class Glock_16 extends MeleeWeapon {
 
-	public int c = 2;
+	public int c = 4;
 	public int n = 4;
 
 	{
-		image = 118; // 96x112
+		image = 118; 
 		tier = 3;
+	}
+
+	public Glock_16() {
+		super();
 	}
 
 	@Override
 	public int max(int lvl) {
-		// Урон ближнего боя: 9 + 7*lvl
-		return 9 + lvl * 8;
+		return 9 + lvl * 7;
 	}
-    
-    @Override
-    public int min(int lvl) {
-        return 5 + lvl * 7; // Ближний бой мин 5
-    }
 
 	@Override
 	public ArrayList<String> actions(Hero hero) {
@@ -55,13 +53,12 @@ public class Glock_16 extends MeleeWeapon {
 		Char target = hero.attackTarget();
 		if (target != null) {
 			c--;
-			// Урон пули: 10-15 + 10*lvl
 			int dmg = (10 + (int)(Math.random() * 5)) + (buffedLvl() * 10);
 			target.damage(dmg, this);
 			GLog.i("Выстрел из Глока! Нанесено " + dmg + " урона.");
 			hero.spend(0.5f);
 		} else {
-			GLog.w("Нет цели для выстрела!");
+			GLog.w("Нет цели!");
 		}
 	}
 
@@ -76,14 +73,18 @@ public class Glock_16 extends MeleeWeapon {
 			int needed = n - c;
 			int toReload = Math.min(needed, bullets.quantity());
 			
-			// Используем безопасный метод удаления предметов
-			bullets = bullets.detach(hero.belongings.backpack, toReload);
-			c += toReload;
+			// ИСПРАВЛЕНИЕ: уменьшаем количество в стаке и, если нужно, удаляем
+			if (bullets.quantity() <= toReload) {
+				bullets.detach(hero.belongings.backpack);
+			} else {
+				bullets.quantity(bullets.quantity() - toReload);
+			}
 			
+			c += toReload;
 			GLog.i("Глок перезаряжен: " + c + "/" + n);
 			hero.spend(1.0f);
 		} else {
-			GLog.w("Нужны пули для перезарядки!");
+			GLog.w("Нужны пули!");
 		}
 	}
 
