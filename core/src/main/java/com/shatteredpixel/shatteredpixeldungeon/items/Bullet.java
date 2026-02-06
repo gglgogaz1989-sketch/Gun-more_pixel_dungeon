@@ -7,9 +7,9 @@ public class Bullet extends Item {
 
     public Bullet() {
         super();
-        // Номер текстуры из твоего файла items.png
-        image = 16; 
-        stackable = true; // Пули собираются в пачки
+        // Рассчитанный индекс для координат 209x17
+        image = 29; 
+        stackable = true;
     }
 
     @Override
@@ -22,24 +22,10 @@ public class Bullet extends Item {
         return "Тяжелый металлический снаряд. В руках он не очень полезен, но если его запустить из чего-то мощного...";
     }
 
-    // Добавляем действия для пули
     @Override
     public ArrayList<String> actions(Hero hero) {
-        ArrayList<String> actions = super.actions(hero);
-        // Пулю нельзя надеть, но её можно БРОСИТЬ (Throw)
-        actions.add(AC_THROW);
-        return actions;
-    }
-
-    @Override
-    public void execute(Hero hero, String action) {
-        // Если игрок нажал "Бросить"
-        if (action.equals(AC_THROW)) {
-            // Запускаем стандартную механику броска предмета
-            curUser = hero;
-            // После этого кода игра предложит выбрать цель для броска
-        } else {
-            super.execute(hero, action);
-        }
+        // Убираем ручное добавление AC_THROW. 
+        // super.actions(hero) сам добавит нужные кнопки (Выложить, Бросить).
+        return super.actions(hero);
     }
 }
