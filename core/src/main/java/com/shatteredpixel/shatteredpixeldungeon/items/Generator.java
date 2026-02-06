@@ -122,6 +122,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.MossyClump;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.ParchmentScrap;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.PetrifiedSeed;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.RatSkull;
+import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.DefencedRatSkull;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.SaltCube;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.ShardOfOblivion;
 import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.ThirteenLeafClover;
@@ -477,7 +478,7 @@ public class Generator {
 					Gauntlet.class,
 					WarScythe.class
 			};
-			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 8, 7, 5};
+			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5 };
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
 			
 			//see Generator.randomArmor
@@ -602,8 +603,9 @@ public class Generator {
 					ChaoticCenser.class,
 					FerretTuft.class,
 					CrackedSpyglass.class
+			     	DefencedRatSkull.class
 			};
-			TRINKET.defaultProbs = new float[]{ 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+			TRINKET.defaultProbs = new float[]{ 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 };
 			TRINKET.probs = TRINKET.defaultProbs.clone();
 
 			BULLET.classes = new Class<?>[]{
