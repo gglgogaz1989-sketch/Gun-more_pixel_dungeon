@@ -6,7 +6,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 public class Bullet extends Item {
 
     {
-        // Текстура на координатах 209x17
+        // Индекс для координат 209x17
         image = 29; 
         stackable = true;
     }
@@ -16,10 +16,9 @@ public class Bullet extends Item {
         return "Пуля";
     }
 
-    // Используем механику урона как в кунае
+    // Для обычных предметов (Item) урон при броске задается этим методом
     @Override
-    public int damageRoll(Char owner) {
-        // Рандом от 10 до 20 через встроенный метод героя
+    public int thrownDamage(Hero hero, Char target) {
         return Hero.heroDamageIntRange(10, 20);
     }
 
