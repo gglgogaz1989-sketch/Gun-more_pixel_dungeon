@@ -33,7 +33,7 @@ public class RatSkull extends Trinket {
 	@Override
 	protected int upgradeEnergyCost() {
 		//6 -> 8(14) -> 10(24) -> 12(36) -> 14(40)
-		return 6+2*level();
+		return 6+3*level();
 	}
 
 	@Override
