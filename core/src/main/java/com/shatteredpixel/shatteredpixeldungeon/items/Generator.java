@@ -164,6 +164,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Katana;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Longsword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Mace;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagesStaff;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Glock_16;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Quarterstaff;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Rapier;
@@ -255,7 +256,7 @@ public class Generator {
 		
 		GOLD	( 200, 200,   Gold.class ),
 
-		BULLET	( 200, 200,   Bullet.class );
+		BULLET	( 350, 350,   Bullet.class );
 		
 		public Class<?>[] classes;
 
@@ -345,8 +346,8 @@ public class Generator {
 					PotionOfParalyticGas.class,
 					PotionOfPurity.class,
 					PotionOfExperience.class};
-			POTION.defaultProbs  = new float[]{ 0, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 };
-			POTION.defaultProbs2 = new float[]{ 0, 3, 2, 2, 1, 2, 1, 1, 1, 1, 1, 0 };
+			POTION.defaultProbs  = new float[]{ 3, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 };
+			POTION.defaultProbs2 = new float[]{ 3, 3, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1 };
 			POTION.probs = POTION.defaultProbs.clone();
 			
 			SEED.classes = new Class<?>[]{
@@ -379,7 +380,7 @@ public class Generator {
 					ScrollOfTerror.class,
 					ScrollOfTransmutation.class
 			};
-			SCROLL.defaultProbs  = new float[]{ 0, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 };
+			SCROLL.defaultProbs  = new float[]{ 3, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 };
 			SCROLL.defaultProbs2 = new float[]{ 0, 3, 2, 2, 1, 2, 1, 1, 1, 1, 1, 0 };
 			SCROLL.probs = SCROLL.defaultProbs.clone();
 			
@@ -476,9 +477,10 @@ public class Generator {
 					Greatshield.class,
 			    	IronShield.class,
 					Gauntlet.class,
-					WarScythe.class
+					WarScythe.class,
+				    Glock_16.class
 			};
-			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5 };
+			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10 };
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
 			
 			//see Generator.randomArmor
@@ -609,9 +611,10 @@ public class Generator {
 			TRINKET.probs = TRINKET.defaultProbs.clone();
 
 			BULLET.classes = new Class<?>[]{
-					Bullet.class
+					Bullet.class,
+				    Glock_16.class
 			};
-			BULLET.defaultProbs = new float[]{ 50 };
+			BULLET.defaultProbs = new float[]{ 1, 1 };
 			BULLET.probs = BULLET.defaultProbs.clone();
 				
 
