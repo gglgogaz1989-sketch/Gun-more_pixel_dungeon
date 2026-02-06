@@ -1,6 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class UpdateBigSword extends MeleeWeapon {
+public class DiamondBigSword extends MeleeWeapon {
     {
         image = 224;
         tier = 5;
@@ -23,7 +23,7 @@ public class UpdateBigSword extends MeleeWeapon {
 
     @Override
     public String name() {
-        return "Улучшенный огромный меч";
+        return "Алмазный огромный меч";
     }
 
     @Override
