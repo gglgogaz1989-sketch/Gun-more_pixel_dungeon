@@ -1,5 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
@@ -56,41 +57,44 @@ public class Glock_16 extends MeleeWeapon {
             return;
         }
 
-        // Автонаведение: используем lastTarget (он обычно public)
-        Char target = hero.lastTarget;
+        Char target = null;
+        
+        // Вручную прописываем поиск соседей, чтобы не зависеть от Level.NEIGHBOURS8
+        int w = Level.WIDTH;
+        int[] adj = { -1, 1, -w, w, -w-1, -w+1, w-1, w+1 };
 
-        if (target == null || !target.isAlive()) {
-            // Если Level.WIDTH приватный, используем Dungeon.level.width() 
-            // или просто ищем по соседям через смещение 1
-            for (int i = 0; i < 8; i++) {
-                int pos = hero.pos + Level.NEIGHBOURS8[i];
-                Char neighbour = Actor.findChar(pos);
-                if (neighbour != null && neighbour != hero && neighbour.isAlive()) {
-                    target = neighbour;
-                    break;
-                }
+        for (int step : adj) {
+            Char neighbour = Actor.findChar(hero.pos + step);
+            if (neighbour != null && neighbour != hero && neighbour.isAlive()) {
+                target = neighbour;
+                break;
             }
         }
 
-        if (target != null && target.isAlive()) {
+        if (target != null) {
             c--;
             int dmg = 10 + (int)(Math.random() * 5) + (buffedLvl() * 10);
             target.damage(dmg, this);
-            target.sprite.bloodBurstA(target.sprite.center(), dmg);
+            
+            if (target.sprite != null) {
+                target.sprite.bloodBurstA(target.sprite.center(), dmg);
+            }
+            
             GLog.i("Бах! " + target.name() + " получает " + dmg + " урона.");
             hero.spend(0.5f);
         } else {
-            GLog.w("Нет целей!");
+            GLog.w("Нет целей рядом!");
         }
     }
 
     public void reload(Hero hero) {
         if (c == n) {
-            GLog.i("Пистолет заряжен.");
+            GLog.i("Магазин полон.");
             return;
         }
 
         Item bullets = hero.belongings.getItem(Bullet.class);
+        
         if (bullets == null) {
             GLog.w("У вас нет пуль!");
             return;
@@ -106,6 +110,19 @@ public class Glock_16 extends MeleeWeapon {
         }
         
         c += toReload;
+        GLog.i("Глок перезаряжен: " + c + "/" + n);
+        hero.spend(1.0f);
+    }
+
+    @Override
+    public String name() { return "Глок 16"; }
+
+    @Override
+    public String desc() {
+        return "Компактный боевой пистолет.\nПатроны: " + c + "/" + n;
+    }
+}
+c += toReload;
         GLog.i("Перезарядка: " + c + "/" + n);
         hero.spend(1.0f);
     }
