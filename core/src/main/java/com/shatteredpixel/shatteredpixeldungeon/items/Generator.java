@@ -147,7 +147,6 @@ import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfTransfusion;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfWarding;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssassinsBlade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BigSword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DiamondBigSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SuperBigSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BattleAxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Crossbow;
@@ -485,7 +484,6 @@ public class Generator {
 					WarScythe.class,
 				    Glock_16.class,
 				    BigSword.class,
-	                DiamondBigSword.class,
 				    SuperBigSword.class
 			};
 			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10, 13, 15, 16 };
