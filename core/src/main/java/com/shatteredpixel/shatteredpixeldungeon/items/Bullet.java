@@ -1,14 +1,13 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import java.util.ArrayList;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.utils.Random;
 
 public class Bullet extends Item {
 
     public Bullet() {
         super();
-        // Рассчитанный индекс для координат 209x17
-        image = 29; 
+        image = 29; // Твоя текстура
         stackable = true;
     }
 
@@ -17,15 +16,15 @@ public class Bullet extends Item {
         return "Пуля";
     }
 
+    // Этот метод отвечает за урон при броске во врага
     @Override
-    public String desc() {
-        return "Тяжелый металлический снаряд. В руках он не очень полезен, но если его запустить из чего-то мощного...";
+    public int damageRoll(Char shooter, Char target) {
+        // Рандом от 10 до 20
+        return Random.Int(10, 20);
     }
 
     @Override
-    public ArrayList<String> actions(Hero hero) {
-        // Убираем ручное добавление AC_THROW. 
-        // super.actions(hero) сам добавит нужные кнопки (Выложить, Бросить).
-        return super.actions(hero);
+    public String desc() {
+        return "Тяжелый металлический снаряд. При броске наносит 10-20 урона.";
     }
 }
