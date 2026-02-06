@@ -2,16 +2,37 @@ package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
-import java.util.ArrayList;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 
-// Наследуемся от Weapon, это надежнее
-public class IronShield extends Weapon {
+public class IronShield extends MeleeWeapon {
 
-    public IronShield() {
-        super();
+    {
+        // Указываем твой индекс иконки
+        image = 17; 
+
+        // 5 тир (самый мощный)
         tier = 5;
-        image = 17;
+    }
+
+    // Урон щита (как у Greatshield)
+    @Override
+    public int max(int lvl) {
+        return Math.round(3f*(tier+1)) + lvl*(tier-1);
+    }
+
+    // ГЛАВНОЕ: Этот метод включает блокировку урона
+    @Override
+    public int defenseFactor( Char owner ) {
+        return DRMax();
+    }
+
+    public int DRMax(){
+        return DRMax(buffedLvl());
+    }
+
+    // Настройка защиты: 10 базы + 4 за каждый уровень заточки
+    public int DRMax(int lvl){
+        return 10 + 4*lvl;
     }
 
     @Override
@@ -21,35 +42,6 @@ public class IronShield extends Weapon {
 
     @Override
     public String desc() {
-        return "Огромный щит из литого железа. Защищает лучше любой брони.";
-    }
-
-    @Override
-    public ArrayList<String> actions(Hero hero) {
-        ArrayList<String> actions = super.actions(hero);
-        if (isEquipped(hero)) {
-            actions.add(AC_UNEQUIP);
-        } else {
-            actions.add(AC_EQUIP);
-        }
-        return actions;
-    }
-
-    // ИСПОЛЬЗУЕМ level() вместо level, чтобы не было ошибки private access
-    @Override
-    public int proc(Char attacker, Char defender, int damage) {
-        return super.proc(attacker, defender, damage);
-    }
-
-    // В некоторых версиях метод защиты называется defense или dr()
-    // Этот вариант должен сработать для блокировки:
-    public int dr() {
-        return 10 + (level() * 4);
-    }
-
-    // Исправляем ошибку private access для силы
-    @Override
-    public int minStrength() {
-        return 14 - level();
+        return "Огромный щит из литого железа. Защищает лучше любой брони, но очень тяжел в обращении.";
     }
 }
