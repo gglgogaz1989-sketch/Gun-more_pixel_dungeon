@@ -222,7 +222,7 @@ public class Generator {
 	public enum Category {
 		TRINKET ( 150, 150, Trinket.class),
 
-		WEAPON	( 150, 150, MeleeWeapon.class),
+		WEAPON	( 200, 150, MeleeWeapon.class),
 		WEP_T1	( 0, 0, MeleeWeapon.class),
 		WEP_T2	( 0, 0, MeleeWeapon.class),
 		WEP_T3	( 0, 0, MeleeWeapon.class),
@@ -238,7 +238,7 @@ public class Generator {
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 0, 0, MissileWeapon.class ),
 		
-		WAND	( 100, 100, Wand.class ),
+		WAND	( 250, 250, Wand.class ),
 		RING	( 10, 10, Ring.class ),
 		ARTIFACT( 5, 1, Artifact.class),
 		
@@ -423,8 +423,9 @@ public class Generator {
 					Gloves.class,
 					Rapier.class,
 					Cudgel.class,
+				    IronShield.class,
 			};
-			WEP_T1.defaultProbs = new float[]{ 2, 0, 2, 2, 2, 2 };
+			WEP_T1.defaultProbs = new float[]{ 2, 0, 2, 2, 2, 2, 5};
 			WEP_T1.probs = WEP_T1.defaultProbs.clone();
 			
 			WEP_T2.classes = new Class<?>[]{
@@ -468,10 +469,11 @@ public class Generator {
 					Glaive.class,
 					Greataxe.class,
 					Greatshield.class,
+			    	IronShield.class,
 					Gauntlet.class,
 					WarScythe.class
 			};
-			WEP_T5.defaultProbs = new float[]{ 2, 2, 2, 2, 2, 2, 2 };
+			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 8, 7, 5};
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
 			
 			//see Generator.randomArmor
@@ -488,7 +490,7 @@ public class Generator {
 					DuelistArmor.class,
 					ClericArmor.class
 			};
-			ARMOR.probs = new float[]{ 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
+			ARMOR.probs = new float[]{ 1, 1, 1, 1, 3, 1, 0, 0, 0, 0, 0 };
 			
 			//see Generator.randomMissile
 			MISSILE.classes = new Class<?>[]{};
@@ -539,7 +541,7 @@ public class Generator {
 					Food.class,
 					Pasty.class,
 					MysteryMeat.class };
-			FOOD.defaultProbs = new float[]{ 4, 1, 0 };
+			FOOD.defaultProbs = new float[]{ 10, 9, 0 };
 			FOOD.probs = FOOD.defaultProbs.clone();
 			
 			RING.classes = new Class<?>[]{
@@ -555,7 +557,7 @@ public class Generator {
 					RingOfSharpshooting.class,
 					RingOfTenacity.class,
 					RingOfWealth.class};
-			RING.defaultProbs = new float[]{ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
+			RING.defaultProbs = new float[]{ 3, 10, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 			RING.probs = RING.defaultProbs.clone();
 			
 			ARTIFACT.classes = new Class<?>[]{
@@ -573,7 +575,7 @@ public class Generator {
 					TimekeepersHourglass.class,
 					UnstableSpellbook.class
 			};
-			ARTIFACT.defaultProbs = new float[]{ 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 };
+			ARTIFACT.defaultProbs = new float[]{ 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 };
 			ARTIFACT.probs = ARTIFACT.defaultProbs.clone();
 
 			//Trinkets are unique like artifacts, but unlike them you can only have one at once
@@ -597,7 +599,7 @@ public class Generator {
 					FerretTuft.class,
 					CrackedSpyglass.class
 			};
-			TRINKET.defaultProbs = new float[]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+			TRINKET.defaultProbs = new float[]{ 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 			TRINKET.probs = TRINKET.defaultProbs.clone();
 
 			for (Category cat : Category.values()){
