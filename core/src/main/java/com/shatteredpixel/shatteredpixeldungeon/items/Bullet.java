@@ -1,15 +1,11 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
-import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
-
 public class Bullet extends Item {
 
     public Bullet() {
         super();
-        // Используем стандартную иконку или свою.
-        // Если у тебя своя текстура пули, замени число 12 на свой индекс
         image = 29; 
-        stackable = true; // Разрешаем стакать в пачки
+        stackable = true;
     }
 
     @Override
@@ -19,11 +15,8 @@ public class Bullet extends Item {
 
     @Override
     public String desc() {
-        return "Патрон для огнестрельного оружия. Сам по себе бесполезен.";
+        return "Патрон для огнестрельного оружия.";
     }
-    
-    @Override
-    public int price() {
-        return 50 * quantity;
-    }
+
+    // Убрали проблемный метод price совсем, чтобы не злить компилятор
 }
