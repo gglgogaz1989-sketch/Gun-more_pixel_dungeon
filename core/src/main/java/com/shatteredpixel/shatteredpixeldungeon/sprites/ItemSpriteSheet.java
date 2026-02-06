@@ -506,10 +506,8 @@ public class ItemSpriteSheet {
 	public static final int CHAOTIC_CENSER  = TRINKETS+14;
 	public static final int FERRET_TUFT     = TRINKETS+15;
 	public static final int SPYGLASS        = TRINKETS+16;
-	public static final int DEFENCED_RAT_SKULL = TRINKETS+17;
 	static{
 		assignItemRect(RAT_SKULL,       16, 11);
-		assignItemRect(DEFENCED_RAT_SKULL,16, 16);
 		assignItemRect(PARCHMENT_SCRAP, 10, 14);
 		assignItemRect(PETRIFIED_SEED,  10, 10);
 		assignItemRect(EXOTIC_CRYSTALS, 14, 13);
