@@ -51,6 +51,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.UnstableSpellboo
 import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
+import com.shatteredpixel.shatteredpixeldungeon.items.Bullet;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Pasty;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.Potion;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfExperience;
@@ -224,11 +225,11 @@ public class Generator {
 		TRINKET ( 150, 150, Trinket.class),
 
 		WEAPON	( 200, 150, MeleeWeapon.class),
-		WEP_T1	( 0, 0, MeleeWeapon.class),
+		WEP_T1	( 100, 100, MeleeWeapon.class),
 		WEP_T2	( 0, 0, MeleeWeapon.class),
 		WEP_T3	( 0, 0, MeleeWeapon.class),
 		WEP_T4	( 0, 0, MeleeWeapon.class),
-		WEP_T5	( 0, 0, MeleeWeapon.class),
+		WEP_T5	( 100, 100, MeleeWeapon.class),
 		
 		ARMOR	( 9, 9, Armor.class ),
 		
@@ -237,7 +238,7 @@ public class Generator {
 		MIS_T2  ( 0, 0, MissileWeapon.class ),
 		MIS_T3  ( 0, 0, MissileWeapon.class ),
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
-		MIS_T5  ( 0, 0, MissileWeapon.class ),
+		MIS_T5  ( 100, 0, MissileWeapon.class ),
 		
 		WAND	( 250, 250, Wand.class ),
 		RING	( 10, 10, Ring.class ),
@@ -251,7 +252,9 @@ public class Generator {
 		SCROLL	( 8, 8, Scroll.class ),
 		STONE   ( 10, 10, Runestone.class),
 		
-		GOLD	( 200, 200,   Gold.class );
+		GOLD	( 200, 200,   Gold.class ),
+
+		BULLET	( 200, 200,   Bullet.class );
 		
 		public Class<?>[] classes;
 
