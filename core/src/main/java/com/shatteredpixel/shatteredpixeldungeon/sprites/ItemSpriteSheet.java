@@ -74,7 +74,7 @@ public class ItemSpriteSheet {
 		assignItemRect(WAND_HOLDER,     14, 14);
 		assignItemRect(RING_HOLDER,     8,  10);
 		assignItemRect(ARTIFACT_HOLDER, 15, 15);
-		assignItemRect(TRINKET_HOLDER,  16, 11);
+		assignItemRect(TRINKET_HOLDER,  16, 13);
 		assignItemRect(FOOD_HOLDER,     15, 11);
 		assignItemRect(BOMB_HOLDER,     10, 13);
 		assignItemRect(POTION_HOLDER,   12, 14);
