@@ -5,7 +5,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 public class IronShield extends MeleeWeapon {
 
 	{
-		image = 102; 
+		image = 101; 
 		tier = 5;
 	}
 
@@ -16,13 +16,13 @@ public class IronShield extends MeleeWeapon {
 	@Override
 	public int max(int lvl) {
 		// Чтобы получить около 60 урона на 5 тире:
-		return 60 + lvl * tier;
+		return 70 + lvl * tier;
 	}
 
 	// Убираем @Override, если движок ругается. 
 	// В SPD min обычно вычисляется сам, но можно оставить так:
 	public int min(int lvl) {
-		return 40 + lvl * 2;
+		return 60 + lvl * 2;
 	}
 
 	@Override
