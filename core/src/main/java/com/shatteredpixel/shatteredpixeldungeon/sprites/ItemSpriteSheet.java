@@ -488,7 +488,7 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_KEY,        8,  16);
 	}
 
-	private static final int TRINKETS        =                               xy(1, 18);  //32 slots
+	private static final int TRINKETS        =                               xy(1, 19);  //32 slots
 	public static final int RAT_SKULL       = TRINKETS+0;
 	public static final int PARCHMENT_SCRAP = TRINKETS+1;
 	public static final int PETRIFIED_SEED  = TRINKETS+2;
@@ -506,8 +506,10 @@ public class ItemSpriteSheet {
 	public static final int CHAOTIC_CENSER  = TRINKETS+14;
 	public static final int FERRET_TUFT     = TRINKETS+15;
 	public static final int SPYGLASS        = TRINKETS+16;
+	public static final int DEFENCED_RAT_SKULL = TRINKETS+17;
 	static{
 		assignItemRect(RAT_SKULL,       16, 11);
+		assignItemRect(DEFENCED_RAT_SKULL,16, 16);
 		assignItemRect(PARCHMENT_SCRAP, 10, 14);
 		assignItemRect(PETRIFIED_SEED,  10, 10);
 		assignItemRect(EXOTIC_CRYSTALS, 14, 13);
