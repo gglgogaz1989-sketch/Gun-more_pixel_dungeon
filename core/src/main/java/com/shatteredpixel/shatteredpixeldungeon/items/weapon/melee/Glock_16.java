@@ -17,20 +17,18 @@ public class Glock_16 extends MeleeWeapon {
     public static final String AC_SHOOT = "ВЫСТРЕЛ";
     public static final String AC_RELOAD = "ПЕРЕЗАРЯДКА";
 
+    {
+        image = 117; 
+        tier = 3;
+    }
+
     public Glock_16() {
         super();
-        image = 117; // Текстура 117
-        tier = 3;
     }
 
     @Override
     public int max(int lvl) {
         return 9 + lvl * 7;
-    }
-    
-    @Override
-    public int min(int lvl) {
-        return 5 + lvl * 2;
     }
 
     @Override
@@ -58,13 +56,15 @@ public class Glock_16 extends MeleeWeapon {
             return;
         }
 
-        // Автонаведение
-        Char target = hero.enemy;
+        // Автонаведение: используем lastTarget (он обычно public)
+        Char target = hero.lastTarget;
+
         if (target == null || !target.isAlive()) {
-            int w = Level.WIDTH;
-            int[] offsets = { -1, 1, -w, w, -w-1, -w+1, w-1, w+1 };
-            for (int offset : offsets) {
-                Char neighbour = Actor.findChar(hero.pos + offset);
+            // Если Level.WIDTH приватный, используем Dungeon.level.width() 
+            // или просто ищем по соседям через смещение 1
+            for (int i = 0; i < 8; i++) {
+                int pos = hero.pos + Level.NEIGHBOURS8[i];
+                Char neighbour = Actor.findChar(pos);
                 if (neighbour != null && neighbour != hero && neighbour.isAlive()) {
                     target = neighbour;
                     break;
@@ -74,10 +74,9 @@ public class Glock_16 extends MeleeWeapon {
 
         if (target != null && target.isAlive()) {
             c--;
-            int dmg = (10 + (int)(Math.random() * 5)) + (buffedLvl() * 10);
+            int dmg = 10 + (int)(Math.random() * 5) + (buffedLvl() * 10);
             target.damage(dmg, this);
             target.sprite.bloodBurstA(target.sprite.center(), dmg);
-            
             GLog.i("Бах! " + target.name() + " получает " + dmg + " урона.");
             hero.spend(0.5f);
         } else {
@@ -85,23 +84,18 @@ public class Glock_16 extends MeleeWeapon {
         }
     }
 
-    // ЛОГИКА ПЕРЕЗАРЯДКИ
     public void reload(Hero hero) {
         if (c == n) {
             GLog.i("Пистолет заряжен.");
             return;
         }
 
-        // Ищем пулю
         Item bullets = hero.belongings.getItem(Bullet.class);
-        
-        // ЕСЛИ НЕ НАШЛИ - КОНЕЦ
         if (bullets == null) {
             GLog.w("У вас нет пуль!");
-            return; // Прерываем выполнение
+            return;
         }
 
-        // Если нашли, заряжаем
         int needed = n - c;
         int toReload = Math.min(needed, bullets.quantity());
         
@@ -117,9 +111,7 @@ public class Glock_16 extends MeleeWeapon {
     }
 
     @Override
-    public String name() {
-        return "Глок 16";
-    }
+    public String name() { return "Глок 16"; }
 
     @Override
     public String desc() {
