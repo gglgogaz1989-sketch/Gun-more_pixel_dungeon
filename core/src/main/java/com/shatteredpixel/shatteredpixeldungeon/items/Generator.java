@@ -147,7 +147,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfTransfusion;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfWarding;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssassinsBlade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BigSword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.UpdateBigSword;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DiamondBigSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SuperBigSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BattleAxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Crossbow;
@@ -236,7 +236,7 @@ public class Generator {
 		WEP_T4	( 0, 0, MeleeWeapon.class),
 		WEP_T5	( 100, 100, MeleeWeapon.class),
 		
-		ARMOR	( 9, 9, Armor.class ),
+		ARMOR	( 90, 9, Armor.class ),
 		
 		MISSILE ( 1, 2, MissileWeapon.class ),
 		MIS_T1  ( 0, 0, MissileWeapon.class ),
@@ -245,17 +245,17 @@ public class Generator {
 		MIS_T4  ( 0, 0, MissileWeapon.class ),
 		MIS_T5  ( 100, 0, MissileWeapon.class ),
 		
-		WAND	( 250, 250, Wand.class ),
+		WAND	( 150, 250, Wand.class ),
 		RING	( 10, 10, Ring.class ),
-		ARTIFACT( 5, 1, Artifact.class),
+		ARTIFACT( 50, 1, Artifact.class),
 		
 		FOOD	( 40, 0, Food.class ),
 		
 		POTION	( 100, 100, Potion.class ),
 		SEED	( 50, 50, Plant.Seed.class ),
 		
-		SCROLL	( 8, 8, Scroll.class ),
-		STONE   ( 10, 10, Runestone.class),
+		SCROLL	( 80, 80, Scroll.class ),
+		STONE   ( 100, 100, Runestone.class),
 		
 		GOLD	( 200, 200,   Gold.class ),
 
@@ -485,7 +485,7 @@ public class Generator {
 					WarScythe.class,
 				    Glock_16.class,
 				    BigSword.class,
-	                UpdateBigSword.class,
+	                DiamondBigSword.class,
 				    SuperBigSword.class
 			};
 			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10, 13, 15, 16 };
@@ -505,7 +505,7 @@ public class Generator {
 					DuelistArmor.class,
 					ClericArmor.class
 			};
-			ARMOR.probs = new float[]{ 1, 1, 1, 1, 3, 1, 0, 0, 0, 0, 0 };
+			ARMOR.probs = new float[]{ 1, 1, 1, 1, 3, 1, 1, 1, 0, 0, 0 };
 			
 			//see Generator.randomMissile
 			MISSILE.classes = new Class<?>[]{};
