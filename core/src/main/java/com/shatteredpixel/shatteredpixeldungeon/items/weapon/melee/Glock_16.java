@@ -5,7 +5,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.Bullet;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
-import com.shatteredpixel.shatteredpixeldungeon.levels.PathFinder; // Нужно для поиска врагов
+import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
 import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 import java.util.ArrayList;
 
@@ -14,16 +14,12 @@ public class Glock_16 extends MeleeWeapon {
     public int c = 4;
     public int n = 4;
 
-    // СТРОКИ ДЛЯ КНОПОК
-    // Чтобы убрать !!no text found!!, эти слова должны быть в файле strings.xml
-    // Но пока мы используем их как ключи.
     public static final String AC_SHOOT = "ВЫСТРЕЛ";
     public static final String AC_RELOAD = "ПЕРЕЗАРЯДКА";
 
     public Glock_16() {
         super();
-        // Текстура сдвинута на 1 влево (было 118, стало 117)
-        image = 117; 
+        image = 117; // Текстура 117
         tier = 3;
     }
 
@@ -62,63 +58,62 @@ public class Glock_16 extends MeleeWeapon {
             return;
         }
 
-        // --- УЛУЧШЕННЫЙ ПОИСК ЦЕЛИ ---
-        Char target = hero.attackTarget;
-        
-        // Если цели нет (мы просто подошли), ищем врага вокруг нас (8 клеток)
-        if (target == null) {
-            for (int dir : PathFinder.NEIGHBOURS8) {
-                Char neighbor = Actor.findChar(hero.pos + dir);
-                if (neighbor != null && neighbor != hero) {
-                    target = neighbor;
-                    break; // Нашли первого попавшегося врага
+        // Автонаведение
+        Char target = hero.enemy;
+        if (target == null || !target.isAlive()) {
+            int w = Level.WIDTH;
+            int[] offsets = { -1, 1, -w, w, -w-1, -w+1, w-1, w+1 };
+            for (int offset : offsets) {
+                Char neighbour = Actor.findChar(hero.pos + offset);
+                if (neighbour != null && neighbour != hero && neighbour.isAlive()) {
+                    target = neighbour;
+                    break;
                 }
             }
         }
 
-        if (target != null) {
+        if (target != null && target.isAlive()) {
             c--;
-            // Расчет урона: (10..15) + уровень * 10
             int dmg = (10 + (int)(Math.random() * 5)) + (buffedLvl() * 10);
-            
             target.damage(dmg, this);
-            target.sprite.bloodBurstA(target.sprite.center(), dmg); // Кровь при попадании
+            target.sprite.bloodBurstA(target.sprite.center(), dmg);
             
-            GLog.i("Бах! " + target.name + " получает " + dmg + " урона.");
+            GLog.i("Бах! " + target.name() + " получает " + dmg + " урона.");
             hero.spend(0.5f);
-            
-            // Если враг умер, обновляем опыт и дроп
-            if (!target.isAlive()) {
-               hero.earnExp(target.HT);
-            }
         } else {
-            GLog.w("Рядом нет врагов!");
+            GLog.w("Нет целей!");
         }
     }
 
+    // ЛОГИКА ПЕРЕЗАРЯДКИ
     public void reload(Hero hero) {
         if (c == n) {
             GLog.i("Пистолет заряжен.");
             return;
         }
 
+        // Ищем пулю
         Item bullets = hero.belongings.getItem(Bullet.class);
-        if (bullets != null) {
-            int needed = n - c;
-            int toReload = Math.min(needed, bullets.quantity());
-            
-            if (bullets.quantity() <= toReload) {
-                bullets.detach(hero.belongings.backpack);
-            } else {
-                bullets.quantity(bullets.quantity() - toReload);
-            }
-            
-            c += toReload;
-            GLog.i("Перезарядка: " + c + "/" + n);
-            hero.spend(1.0f);
-        } else {
-            GLog.w("Нужны пули!");
+        
+        // ЕСЛИ НЕ НАШЛИ - КОНЕЦ
+        if (bullets == null) {
+            GLog.w("У вас нет пуль!");
+            return; // Прерываем выполнение
         }
+
+        // Если нашли, заряжаем
+        int needed = n - c;
+        int toReload = Math.min(needed, bullets.quantity());
+        
+        if (bullets.quantity() <= toReload) {
+            bullets.detach(hero.belongings.backpack);
+        } else {
+            bullets.quantity(bullets.quantity() - toReload);
+        }
+        
+        c += toReload;
+        GLog.i("Перезарядка: " + c + "/" + n);
+        hero.spend(1.0f);
     }
 
     @Override
