@@ -606,6 +606,13 @@ public class Generator {
 			TRINKET.defaultProbs = new float[]{ 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 			TRINKET.probs = TRINKET.defaultProbs.clone();
 
+			BULLET.classes = new Class<?>[]{
+					Bullet.class
+			};
+			BULLET.defaultProbs = new float[]{ 50 };
+			BULLET.probs = BULLET.defaultProbs.clone();
+				
+
 			for (Category cat : Category.values()){
 				if (cat.defaultProbs2 != null){
 					cat.defaultProbsTotal = new float[cat.defaultProbs.length];
