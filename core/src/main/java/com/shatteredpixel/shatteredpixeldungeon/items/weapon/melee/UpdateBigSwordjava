@@ -1,6 +1,6 @@
 package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
 
-public class UpgradeBigSword extends MeleeWeapon {
+public class UpdateBigSword extends MeleeWeapon {
     {
         image = 224;
         tier = 5;
