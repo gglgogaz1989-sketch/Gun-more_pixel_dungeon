@@ -256,7 +256,7 @@ public class Generator {
 		
 		GOLD	( 200, 200,   Gold.class ),
 
-		BULLET	( 350, 350,   Bullet.class );
+		BULLET	( 550, 550,   Bullet.class );
 		
 		public Class<?>[] classes;
 
@@ -614,7 +614,7 @@ public class Generator {
 					Bullet.class,
 				    Glock_16.class
 			};
-			BULLET.defaultProbs = new float[]{ 1, 1 };
+			BULLET.defaultProbs = new float[]{ 10, 5 };
 			BULLET.probs = BULLET.defaultProbs.clone();
 				
 
