@@ -27,7 +27,7 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 public class DefencedRatSkull extends Trinket {
 
 	{
-		image = ItemSpriteSheet.RAT_SKULL;
+		image = ItemSpriteSheet.DEFENCED_RAT_SKULL;
 	}
 
 	@Override
