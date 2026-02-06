@@ -1,13 +1,13 @@
 package com.shatteredpixel.shatteredpixeldungeon.items;
 
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.utils.Random;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 
 public class Bullet extends Item {
 
-    public Bullet() {
-        super();
-        image = 29; // Твоя текстура
+    {
+        // Текстура на координатах 209x17
+        image = 29; 
         stackable = true;
     }
 
@@ -16,15 +16,15 @@ public class Bullet extends Item {
         return "Пуля";
     }
 
-    // Этот метод отвечает за урон при броске во врага
+    // Используем механику урона как в кунае
     @Override
-    public int damageRoll(Char shooter, Char target) {
-        // Рандом от 10 до 20
-        return Random.Int(10, 20);
+    public int damageRoll(Char owner) {
+        // Рандом от 10 до 20 через встроенный метод героя
+        return Hero.heroDamageIntRange(10, 20);
     }
 
     @Override
     public String desc() {
-        return "Тяжелый металлический снаряд. При броске наносит 10-20 урона.";
+        return "Тяжелый металлический снаряд. Наносит 10-20 урона при броске.";
     }
 }
