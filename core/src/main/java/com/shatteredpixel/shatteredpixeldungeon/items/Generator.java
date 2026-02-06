@@ -146,6 +146,9 @@ import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfRegrowth;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfTransfusion;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfWarding;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssassinsBlade;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BigSword;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.UpgradeBigSword;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SuperBigSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BattleAxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Crossbow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Cudgel;
@@ -478,7 +481,10 @@ public class Generator {
 			    	IronShield.class,
 					Gauntlet.class,
 					WarScythe.class,
-				    Glock_16.class
+				    Glock_16.class,
+				    BigSword.class,
+				    UpgradeBigSword.class,
+				    SuperBigSword.class
 			};
 			WEP_T5.defaultProbs = new float[]{ 4, 4, 4, 4, 4, 10, 7, 5, 10 };
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
@@ -612,9 +618,12 @@ public class Generator {
 
 			BULLET.classes = new Class<?>[]{
 					Bullet.class,
-				    Glock_16.class
+				    Glock_16.class,
+					BigSword.class,
+				    UpgradeBigSword.class,
+				    SuperBigSword.class
 			};
-			BULLET.defaultProbs = new float[]{ 10, 5 };
+			BULLET.defaultProbs = new float[]{ 10, 5, 13, 13, 13};
 			BULLET.probs = BULLET.defaultProbs.clone();
 				
 
