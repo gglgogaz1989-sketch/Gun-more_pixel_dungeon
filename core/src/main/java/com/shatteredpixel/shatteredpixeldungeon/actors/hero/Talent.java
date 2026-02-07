@@ -147,7 +147,7 @@ public enum Talent {
 	SHADOW_BLADE(87, 4), CLONED_ARMOR(88, 4), PERFECT_COPY(89, 4),
 
 	//Huntress T1
-	NATURES_BOUNTY(96), SURVIVALISTS_INTUITION(97), FOLLOWUP_STRIKE(98), NATURES_AID(99), NATURE_PROTECTION(230),
+	NATURES_BOUNTY(96), SURVIVALISTS_INTUITION(97), FOLLOWUP_STRIKE(98), NATURES_AID(99),
 	//Huntress T2
 	INVIGORATING_MEAL(100), LIQUID_NATURE(101), REJUVENATING_STEPS(102), HEIGHTENED_SENSES(103), DURABLE_PROJECTILES(104),
 	//Huntress T3
@@ -458,7 +458,7 @@ public enum Talent {
 				case ROGUE:
 					return 90;
 				case HUNTRESS:
-					return 231;
+					return 122;
 				case DUELIST:
 					return 154;
 				case CLERIC:
@@ -733,7 +733,7 @@ public enum Talent {
 				CellEmitter.get(grassCell).burst(LeafParticle.LEVEL_SPECIFIC, 4);
 			}
 			// 4/6 cells total
-			int totalGrassCells = (int) (factor * (2 + 2 * hero.pointsInTalent(LIQUID_NATURE)));
+			int totalGrassCells = (int) (factor * (5 + 2 * hero.pointsInTalent(LIQUID_NATURE)));
 			while (grassCells.size() > totalGrassCells){
 				grassCells.remove(0);
 			}
@@ -866,7 +866,7 @@ public enum Talent {
 
 		if (hero.hasTalent(Talent.PROVOKED_ANGER)
 			&& hero.buff(ProvokedAngerTracker.class) != null){
-			dmg += 1 + 2*hero.pointsInTalent(Talent.PROVOKED_ANGER);
+			dmg += 1 + 3*hero.pointsInTalent(Talent.PROVOKED_ANGER);
 			hero.buff(ProvokedAngerTracker.class).detach();
 		}
 
@@ -983,7 +983,7 @@ public enum Talent {
 				Collections.addAll(tierTalents, CACHED_RATIONS, THIEFS_INTUITION, SUCKER_PUNCH, PROTECTIVE_SHADOWS);
 				break;
 				case HUNTRESS:
-				Collections.addAll(tierTalents, NATURES_BOUNTY, SURVIVALISTS_INTUITION, FOLLOWUP_STRIKE, NATURES_AID, NATURE_PROTECTION);
+				Collections.addAll(tierTalents, NATURES_BOUNTY, SURVIVALISTS_INTUITION, FOLLOWUP_STRIKE, NATURES_AID);
                 break;
 			case DUELIST:
 				Collections.addAll(tierTalents, STRENGTHENING_MEAL, ADVENTURERS_INTUITION, PATIENT_STRIKE, AGGRESSIVE_BARRIER);
