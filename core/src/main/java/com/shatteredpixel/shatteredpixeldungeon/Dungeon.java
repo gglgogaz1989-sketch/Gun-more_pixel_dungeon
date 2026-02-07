@@ -264,8 +264,8 @@ public class Dungeon {
 		branch = 0;
 		generatedLevels.clear();
 
-		gold = 99999;
-		energy = 99999;
+		gold = 999999;
+		energy = 999999;
 
 		droppedItems = new SparseArray<>();
 
@@ -446,7 +446,7 @@ public class Dungeon {
 	//is usually the dungeon depth, but can be set to 26 when ascending
 	public static int scalingDepth(){
 		if (Dungeon.hero != null && Dungeon.hero.buff(AscensionChallenge.class) != null){
-			return 26;
+			return 30;
 		} else {
 			return depth;
 		}
