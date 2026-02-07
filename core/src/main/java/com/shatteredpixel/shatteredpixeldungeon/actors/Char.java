@@ -187,7 +187,7 @@ public abstract class Char extends Actor {
 	}
 	public Alignment alignment;
 	
-	public int viewDistance	= 8;
+	public int viewDistance	= 15;
 	
 	public boolean[] fieldOfView = null;
 	
