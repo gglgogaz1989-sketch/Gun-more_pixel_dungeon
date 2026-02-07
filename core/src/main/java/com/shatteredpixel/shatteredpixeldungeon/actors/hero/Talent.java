@@ -147,7 +147,7 @@ public enum Talent {
 	SHADOW_BLADE(87, 4), CLONED_ARMOR(88, 4), PERFECT_COPY(89, 4),
 
 	//Huntress T1
-	NATURES_BOUNTY(96), SURVIVALISTS_INTUITION(97), FOLLOWUP_STRIKE(98), NATURES_AID(99),
+	NATURES_BOUNTY(96), SURVIVALISTS_INTUITION(97), FOLLOWUP_STRIKE(98), NATURES_AID(99), NATURE_PROTECTION(230),
 	//Huntress T2
 	INVIGORATING_MEAL(100), LIQUID_NATURE(101), REJUVENATING_STEPS(102), HEIGHTENED_SENSES(103), DURABLE_PROJECTILES(104),
 	//Huntress T3
@@ -458,7 +458,7 @@ public enum Talent {
 				case ROGUE:
 					return 90;
 				case HUNTRESS:
-					return 122;
+					return 231;
 				case DUELIST:
 					return 154;
 				case CLERIC:
@@ -954,7 +954,7 @@ public enum Talent {
 		}
 	};
 
-	public static final int MAX_TALENT_TIERS = 4;
+	public static final int MAX_TALENT_TIERS = 5;
 
 	public static void initClassTalents( Hero hero ){
 		initClassTalents( hero.heroClass, hero.talents, hero.metamorphedTalents );
@@ -982,9 +982,9 @@ public enum Talent {
 			case ROGUE:
 				Collections.addAll(tierTalents, CACHED_RATIONS, THIEFS_INTUITION, SUCKER_PUNCH, PROTECTIVE_SHADOWS);
 				break;
-			case HUNTRESS:
-				Collections.addAll(tierTalents, NATURES_BOUNTY, SURVIVALISTS_INTUITION, FOLLOWUP_STRIKE, NATURES_AID);
-				break;
+				case HUNTRESS:
+				Collections.addAll(tierTalents, NATURES_BOUNTY, SURVIVALISTS_INTUITION, FOLLOWUP_STRIKE, NATURES_AID, NATURE_PROTECTION);
+                break;
 			case DUELIST:
 				Collections.addAll(tierTalents, STRENGTHENING_MEAL, ADVENTURERS_INTUITION, PATIENT_STRIKE, AGGRESSIVE_BARRIER);
 				break;
